@@ -5,6 +5,13 @@ const PORT = 3000;
 const usuario = require("./controllers/index");
 const path = require("path")
 const connection = require('./models/database')
+const Article = require("./models/Article")
+const Category = require("./models/Category")
+
+
+
+
+
 
 app.set("view engine", "ejs");
 
