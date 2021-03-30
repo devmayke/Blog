@@ -2,10 +2,7 @@ const Category = require("../../../models/Category")
 const slugify = require("slugify")
 
 module.exports = {
-    getNew:(req, res)=>{
-        res.render('newCategory')
-    },
-    post:(req, res)=>{    
+    postSave:(req, res)=>{    
         let title = req.body.title;
         if(title){   
             Category.create({
@@ -13,21 +10,41 @@ module.exports = {
                 slug: slugify(title).toLowerCase()
             }) 
             .then (()=>{
-                res.redirect("/categories/new") 
+                res.redirect("/categories") 
             })
         }else{
-            res.redirect("/categories/new")
+            res.redirect("/categories")
         }
     },
     getIndex:(req, res)=>{
 
-        Category.findAll({raw:true})
+        Category.findAll({raw:true, order: [['id', 'DESC']]})
         .then((categories)=>{
             res.render("indexCategory", {categories:categories})
         })
         .catch((err)=>{
-            console.log(erro)
+            console.log(err)
+        })        
+    },
+    postDelete:(req, res)=>{
+        let id = req.body.id;
+        console.log(id)        
+        Category.destroy({where:{id:id}, restartIdentity: true })
+        .then(()=>{
+            res.redirect("/categories")
         })
-        
+        .catch((err)=>{
+            console.log(err)
+        })
+    },
+    getEdit:(req, res)=>{
+        let id = req.params.id
+        Category.findByPk(id)
+        .then((category)=>{
+            res.render("editCategory", {category:category})
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 }

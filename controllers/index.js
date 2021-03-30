@@ -7,8 +7,9 @@ const articles = require("./routes-controller/articles/articles");
 
 router.get("/", index.get);
 router.get("/categories", categories.getIndex)
-router.get("/categories/new", categories.getNew)
-router.post("/categories/save", categories.post)
+router.post("/categories/delete", categories.postDelete)
+router.post("/categories/save", categories.postSave)
+router.get("/categories/edit/:id", categories.getEdit)
 
 
 router.get("/articles", articles.get)

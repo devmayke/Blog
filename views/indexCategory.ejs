@@ -1,6 +1,11 @@
 <%- include ("partials/head") %>
 <%- include ("partials/navbar") %>
    <main>
+        <form action="/categories/save" method="POST">
+            <span id="categoria-texto"><label for="title">Categoria:</label></span>
+                <input type="text" name="title">
+            <button>Registrar</button>
+        </form>
        <table>
            <thead class="table-head">
                <tr>
@@ -17,18 +22,50 @@
                             <td><%= category.id %></td>                
                             <td><%= category.title %></td>               
                             <td><%= category.slug %></td>               
-                            <td></td>
+                            <td>
+                                <form action="/categories/edit/<%= category.id %>" method="GET" style="display:inline;">
+                                    <button class="action edit" style="display:inline;">Editar</button>                                
+                                </form>
+                                <form action="/categories/delete" method="POST"  style="display:inline;">
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+                                    <button  class="action delete"  style="display:inline;" >Deletar</button>
+                                </form>                            
+                            </td>
                         </tr>   
                     <%} else{ %> 
                         <tr class="tr-light">
                             <td><%= category.id %></td>                
-                            <td><%= category.title %></td>               
+                            <td><%= category.title %></td>                
                             <td><%= category.slug %></td>               
-                            <td></td>
+                            <td>
+                                <form action="/categories/edit/<%= category.id %>" method="GET" style="display:inline;">
+                                    <button class="action edit" style="display:inline;">Editar</button>                                
+                                </form>
+                                <form action="/categories/delete" method="POST"  style="display:inline;">
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+                                    <button  class="action delete"  style="display:inline;" >Deletar</button>
+                                </form>   
+                            </td>
                         </tr> 
                     <% } %>
                 <% }) %>
         </tbody>         
        </table>
    </main>
+   <script> 
+        let btnDelete = document.querySelectorAll(".delete")   
+            btnDelete.forEach(el=>{
+            el.addEventListener("click", function(e){
+                
+                    const decision = confirm("Deseja realmente deletar esta categoria?")                         
+                    if(decision){               
+                        console.log("NÂO DELETE")
+                    }else{
+                        e.preventDefault()
+                        console.log("DELETE")
+                    }
+                })
+            }
+        )        
+   </script>
 <%- include ("partials/footer") %>
