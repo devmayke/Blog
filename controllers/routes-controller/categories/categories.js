@@ -16,11 +16,10 @@ module.exports = {
             res.redirect("/categories")
         }
     },
-    getIndex:(req, res)=>{
-
+    getIndex:(req, res)=>{ 
         Category.findAll({raw:true, order: [['id', 'DESC']]})
         .then((categories)=>{
-            res.render("indexCategory", {categories:categories})
+            res.render("category/indexCategory", {categories:categories})
         })
         .catch((err)=>{
             console.log(err)
@@ -41,10 +40,19 @@ module.exports = {
         let id = req.params.id
         Category.findByPk(id)
         .then((category)=>{
-            res.render("editCategory", {category:category})
+            res.render("category/editCategory", {category:category})
         })
         .catch((err)=>{
             console.log(err)
         })
+    },
+    postUpdate:(req, res)=>{
+        let title = req.body.title
+        let id = req.body.id
+        Category.update({title:title, slug: slugify(title).toLowerCase()},{where:{id:id}})
+        .then(()=>{
+            res.redirect("/categories")
+        })
+
     }
 }

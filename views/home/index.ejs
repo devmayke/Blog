@@ -1,0 +1,33 @@
+<%- include ("../partials/head") %>
+<%- include ("../partials/navbar") %>
+
+
+
+<header class="home-header">
+
+
+</header>
+
+
+
+<main class="home-main">  
+    
+    <section class="home-section">
+        <% articles.forEach(article=>{ %>
+            <article class="home-article">                
+                 <div class='home-article-body'><%- article.body%></>
+                <h3 class="home-article-title"><%= article.title %></h3><br>
+            </article>
+        <% }) %>        
+    </section>
+
+
+
+    <!-- <aside class="home-aside">
+
+    </aside> -->
+</main>
+
+
+
+<%- include ("../partials/footer") %>

@@ -1,0 +1,13 @@
+
+<%- include ("../partials/head") %>
+<%- include ("../partials/navbar") %>
+<main>
+    <form action="/categories/update" method="POST" class="edit">
+        <span id="categoria-texto"><label for="title">Categoria:</label></span>
+            <input type="text" name="title" value="<%= category.title %>">
+            <input type="hidden" name="id" value="<%= category.id %>">
+        <button>Atualizar</button>
+    </form>
+</main>
+<%= category.title %><%= category.id %>
+<%- include ("../partials/footer") %>

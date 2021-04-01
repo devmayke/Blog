@@ -7,6 +7,9 @@ const path = require("path")
 const connection = require('./models/database')
 const Article = require("./models/Article")
 const Category = require("./models/Category")
+const Cadastro = require("./models/Cadastro")
+
+
 
 
 
@@ -20,6 +23,15 @@ connection.authenticate()
     console.log("Conectado ao Banco de dados")
 })
 .catch((err)=>{console.log( "ERRO >>>  "+ err);})
+
+Cadastro.create({
+    usuario: "Mayke",
+    password: "Codebase1@1"
+}).then(()=>{
+    console.log("usuario criado com sucesso..")
+}).catch((err)=>{
+    console.log(err)
+})
 
 
 app.use(express.static(path.join(__dirname,"public")))

@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const connection = require("./database");
-const Article = require("./Article") 
+
 
 
 const Category = connection.define("categories", {
@@ -14,9 +14,6 @@ const Category = connection.define("categories", {
     }
 });
 
-
-Category.hasMany(Article);
-Article.belongsTo(Category);
 
 // Category.sync({force:true}).then(()=>{
 //     console.log("Tabela 'Category' criada com sucesso...")

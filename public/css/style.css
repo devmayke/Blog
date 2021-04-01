@@ -1,9 +1,12 @@
+/*----------------- RESET ------------------- */
 *{
     margin:0px;
     padding: 0px;
     font-family: sans-serif;    
     text-align: center;
+    box-sizing: border-box;
 }
+/* ---------------- PARTIALS NAVIBAR ------------------- */
 nav{
     display:flex;
     flex-direction: column;
@@ -13,14 +16,13 @@ nav{
 .menu{  
     max-width: 100%;
     height:7vh;
-    display:flex;
- 
-    padding:10px;  
+    display:flex; 
+    align-items: center;
+    padding-left: 30px;;
+   
     background: #dde6ea; 
 }
-img{    
-    padding-left: 55px;
-    margin:-10px;
+img{   
     display:block;  
     border-radius:5px; 
 }
@@ -40,6 +42,8 @@ a:visited {
     color:black;
 }
 
+
+
 main{
     display: flex;
     flex-direction: column;
@@ -58,20 +62,30 @@ main{
     
  }
 
-#categoria-texto{  
+#categoria-texto{ 
+   
+    display: block; 
     color:#0d55ff;
     font-size: larger;
 }
+.edit, .register{
+    display:flex;
+    justify-content: center;
+    align-items: center;  
+    margin-bottom:  35px; 
+}
+
 input:focus, button:focus{
     border:1px solid #0d55ff;
     outline: 0;
 }
 input{
+    margin: 0px 15px;
     text-align: start;
     padding:6px 10px;
     border:1px solid #0d55ff;
     border-radius: 80px;
-   }
+}
 button{
     background:#0d55ff;
     color: white;
@@ -86,13 +100,10 @@ button{
     border:none;
     border-radius: 80px;
 }
-.edit{
-    background:#f3a638;
-}.delete{
+
+.delete{
     background:#d9534f;
 }
-
-
 .table-head tr th{
     padding: 3px;
   
@@ -108,4 +119,80 @@ table{
 }
 .tr-light{
     background: #dde6ea;
+}
+/*----------------    ROTA  /articles ---------------------   */
+.article{
+    display:flex;    
+    align-items: center;   
+}
+.form-article{ 
+    width: 70%;   
+    display:flex;
+    flex-direction: column;   
+    align-items: flex-start;  
+}
+#article-text{
+    width: 100%;  
+    display:flex;
+    align-items: center;   
+    margin-bottom:30px;  
+}
+.form-input-article{
+    width: 100%;
+    margin:2px;
+}
+.form-cadastrar-article{
+    margin: auto;
+    margin-top: 20px;
+}
+/* -------------- -- ROTA /   --------------------     */
+.home-header{
+    padding: 20px;
+    width: 80%;
+    height: 20vh;
+    margin:auto;
+    border:1px solid red
+}
+.home-main{
+    display: flex;  
+    flex-direction: row; 
+    padding: 0px 20px;    
+    width:80%; 
+    min-height:90vh;
+    margin:auto;
+    border:1px solid black;
+}
+.home-section{
+    display: block;   
+    border:1px solid blue;    
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.home-article{
+    padding:5px;  
+    width: 50%;  
+    height:40vh;
+    border:1px solid violet;
+    float: left;
+}
+ 
+/* .home-aside{
+    width: 30%; 
+    height:74vh;  
+    border:1px solid green; 
+} */
+.home-article-body iframe{
+    width: 80%;
+    height:40%;
+    /* display: none; */
+}
+
+.home-article-body p:first-child{
+    display:none;
+}
+.home-article-title{
+  
+    font-size: 12px;
+    text-align: start;
+    
 }
